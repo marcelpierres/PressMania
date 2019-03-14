@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Text, View ,StyleSheet,Button} from 'react-native';
 
  class LoginScreen extends Component {
+   static navigationOptions ={
+     header: null
+   }
     render() {
       return (
         <View style={styles.container}>

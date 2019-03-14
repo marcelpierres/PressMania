@@ -9,7 +9,8 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-import {createStackNavigator, createAppContainer} from 'react-navigation';
+import {createStackNavigator, createAppContainer, createMaterialBottomTabNavigator} from 'react-navigation';
+import AppStackNavigator from './utilities/router';
 import PressMania from './src/PressMania';
 import LoginScreen from './src/components/LoginScreen';
 import  store from './src/store';
@@ -34,17 +35,14 @@ export default class App extends Component<Props> {
   }
 }
 
-const AppStackNavigator = createStackNavigator({
-  Login: LoginScreen,
-  Home: PressMania
-});
+
 const MainScreen = createAppContainer(AppStackNavigator);
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    alignItems: 'center'
   },
 
 });
