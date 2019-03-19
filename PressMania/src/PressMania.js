@@ -13,6 +13,9 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 
 type Props = {};
 export default class PressMania extends Component {
+  static navigationOptions ={
+    header: null
+  }
   render() {
     return (
       <View style={styles.container}>
