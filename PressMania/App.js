@@ -9,6 +9,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
+import AppStyles from './src/stylesheet/Appstyles';
 import {createStackNavigator, createAppContainer, createMaterialBottomTabNavigator} from 'react-navigation';
 import AppStackNavigator from './utilities/router';
 import PressMania from './src/PressMania';
@@ -40,9 +41,9 @@ const MainScreen = createAppContainer(AppStackNavigator);
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    flex: AppStyles.container.flex,
+    justifyContent: AppStyles.container.justifyContent,
+    alignItems: AppStyles.container.alignItems
   },
 
 });
