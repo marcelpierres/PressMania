@@ -1,6 +1,6 @@
 import {createStore} from 'redux'
-
-const rootReducer = () =>{
+import ScoreTracker from '../reducers/scoretracker';
+/*const rootReducer = () =>{
     
-}
-export default store = createStore(rootReducer)
+}*/
+export default store = createStore(ScoreTracker)

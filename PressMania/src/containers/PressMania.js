@@ -9,19 +9,18 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View,Button,Image,ImageBackground,TouchableOpacity,BackHandler} from 'react-native';
-import AppStyles from './stylesheet/Appstyles';
-import ScoreDisplay from './components/scoredisplay';
-import {Provider} from 'react-redux';
+import AppStyles from '../stylesheet/Appstyles';
+import ScoreDisplay from '../components/scoredisplay';
+import {Provider,connect} from 'react-redux';
+var Sound = require('react-native-sound');
 type Props = {};
-export default class PressMania extends Component {
+class PressMania extends Component {
   static navigationOptions ={
     headerRight: (
       <ScoreDisplay/>
     )
   }
-  state = {
-    counter: 0
-  }
+  
   //disable hardware backbutton
   //WARNING! To be deprecated in React v17. Use componentDidMount instead.
   /*componentDidMount() {
@@ -33,14 +32,29 @@ export default class PressMania extends Component {
       return true;
     });
   }*/
+  componentDidMount(){
+    this.hello = new Sound('honk1.mp3', Sound.MAIN_BUNDLE, (error) => {
+      if (error) {
+        console.log('failed to load the sound', error);
+        return;
+      }
+    });
+  }
+  
+  
+  handlePress() {
+    this.hello.play((success) => {
+      if (!success) {
+        console.log('Sound did not play')
+      }
+    })
+  }
+
   render() {
-    return (
-      
-      
-        
+    return ( 
       <View style={styles.container}>
-        <TouchableOpacity >
-        <Image source={require('./assets/button-image.png')}
+        <TouchableOpacity onPress={() => {this.props.increaseCounter(); this.hello.play();}}>
+        <Image source={require('../assets/button-image.png')}
         style={styles.imageStyle}/>
         </TouchableOpacity>
       </View>
@@ -48,6 +62,16 @@ export default class PressMania extends Component {
     );
   }
 }
+
+
+const mapDispatchToProps = (dispatch) =>{
+  return {
+      increaseCounter: () => dispatch({ type: 'INCREASE_COUNTER' }),
+      decreaseCounter: () => dispatch({ type: 'DECREASE_COUNTER' }),
+  }
+}
+
+export default connect(null,mapDispatchToProps)(PressMania);
 
 const styles = StyleSheet.create({
   container: {

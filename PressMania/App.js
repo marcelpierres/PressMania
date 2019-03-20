@@ -12,7 +12,7 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 import AppStyles from './src/stylesheet/Appstyles';
 import {createStackNavigator, createAppContainer, createMaterialBottomTabNavigator} from 'react-navigation';
 import AppStackNavigator from './utilities/router';
-import PressMania from './src/PressMania';
+import PressMania from './src/containers/PressMania';
 import LoginScreen from './src/components/LoginScreen';
 import  store from './src/store';
 import {Provider} from 'react-redux';
