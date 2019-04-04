@@ -1,5 +1,5 @@
 const initialState ={
-    counter: 10
+    counter: 0
 }
 const scoreTracker = (state = initialState, action) =>{
     switch(action.type){
