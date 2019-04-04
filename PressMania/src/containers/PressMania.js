@@ -11,13 +11,17 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View,Button,Image,ImageBackground,TouchableOpacity,BackHandler} from 'react-native';
 import AppStyles from '../stylesheet/Appstyles';
 import ScoreDisplay from '../components/scoredisplay';
+import HighScoreDisplay from '../components/highscoredisplay';
 import {Provider,connect} from 'react-redux';
 var Sound = require('react-native-sound');
 type Props = {};
 class PressMania extends Component {
   static navigationOptions ={
-    headerRight: (
+    headerLeft: (
       <ScoreDisplay/>
+    ),
+    headerRight: (
+      <HighScoreDisplay/>
     )
   }
   
