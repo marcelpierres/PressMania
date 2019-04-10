@@ -1,5 +1,9 @@
+var RNFS = require('react-native-fs');
+var path = RNFS.DocumentDirectoryPath +'/log.txt'
+
 const initialState ={
-    counter: 0
+    counter: 0,
+    highscore:0
 }
 const scoreTracker = (state = initialState, action) =>{
     switch(action.type){
@@ -9,6 +13,16 @@ const scoreTracker = (state = initialState, action) =>{
         case 'DECREASE_COUNTER':
             return{counter: state.counter - 1}
     }
+    RNFS.writeFile(path,state.counter,'utf8')
+    .then((success)=>{
+        console.log('File Written');
+    }
+
+    ).catch((err) =>{
+        console.log(err.message);
+    }
+
+    )
     return state
 }
 
